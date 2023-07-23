@@ -54,6 +54,7 @@ import androidx.core.content.res.ResourcesCompat;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.customization.IconDatabase;
 import com.android.launcher3.icons.DotRenderer;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.model.DeviceGridState;
 import com.android.launcher3.provider.RestoreDbTask;
 import com.android.launcher3.testing.shared.ResourceUtils;
@@ -344,6 +345,9 @@ public class InvariantDeviceProfile implements
             case KEY_ALLAPPS_THEMED_ICONS:
             case IconDatabase.KEY_ICON_PACK:
                 onConfigChanged(mContext);
+                break;
+            case IconDatabase.KEY_THEMED_ICON_PACK:
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
         }
     }
